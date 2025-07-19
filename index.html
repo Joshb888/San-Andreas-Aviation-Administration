@@ -171,10 +171,254 @@
 
   <!-- ✈️ Flight Log -->
   <section id="flightlog">
+  <div class="card shadow" style="background: linear-gradient(135deg, #091f62, #003399); color: white;">
+    <div class="card-header text-center">
     <h2>📝 Flight Log Generator</h2>
-    <p>This is where your flight entry form would go. (Add form HTML like previously if needed.)</p>
-  </section>
+    </div>
+    <div class="card-body">
+      <form id="flightInfoForm" autocomplete="off" novalidate>
+        <!-- Date -->
+        <div class="mb-3 row align-items-center">
+          <label for="flightDate" class="col-sm-4 col-form-label fw-bold text-end">Date:</label>
+          <div class="col-sm-8">
+            <input type="date" id="flightDate" class="form-control" required />
+          </div>
+        </div>
+        <!-- Aircraft Tail Number or Callsign -->
+        <div class="mb-3 row align-items-center">
+          <label for="tailNumber" class="col-sm-4 col-form-label fw-bold text-end">Aircraft Tail Number or Callsign:</label>
+          <div class="col-sm-8">
+            <input type="text" id="tailNumber" class="form-control" required />
+          </div>
+        </div>
+        <!-- Passenger List -->
+        <div class="mb-3 row align-items-center">
+          <label for="passengerList" class="col-sm-4 col-form-label fw-bold text-end">Passenger List:</label>
+          <div class="col-sm-8">
+            <input type="text" id="passengerList" class="form-control" required />
+          </div>
+        </div>
+        <!-- Departure Time -->
+        <div class="mb-3 row align-items-center">
+          <label for="departureTime" class="col-sm-4 col-form-label fw-bold text-end">Departure Time (UTC):</label>
+          <div class="col-sm-8">
+            <input type="text" id="departureTime" class="form-control" required />
+          </div>
+        </div>
+        <!-- Departure Location -->
+        <div class="mb-3 row align-items-center">
+          <label for="departureLocation" class="col-sm-4 col-form-label fw-bold text-end">Departure Location:</label>
+          <div class="col-sm-8">
+            <input type="text" id="departureLocation" class="form-control" required />
+          </div>
+        </div>
+        <!-- Intermittent Locations -->
+        <div class="mb-3 row align-items-center">
+          <label for="intermittentLocations" class="col-sm-4 col-form-label fw-bold text-end">Intermittent Locations:</label>
+          <div class="col-sm-8">
+            <input type="text" id="intermittentLocations" class="form-control" required />
+          </div>
+        </div>
+        <!-- Arrival Location -->
+        <div class="mb-3 row align-items-center">
+          <label for="arrivalLocation" class="col-sm-4 col-form-label fw-bold text-end">Arrival Location:</label>
+          <div class="col-sm-8">
+            <input type="text" id="arrivalLocation" class="form-control" required />
+          </div>
+        </div>
+        <!-- Cruise Altitude -->
+        <div class="mb-3 row align-items-center">
+          <label for="cruiseAltitude" class="col-sm-4 col-form-label fw-bold text-end">Cruise Altitude (Feet):</label>
+          <div class="col-sm-8">
+            <input type="text" id="cruiseAltitude" class="form-control" required />
+          </div>
+        </div>
+        <!-- Total Flight Time -->
+        <div class="mb-3 row align-items-center">
+          <label for="flightTime" class="col-sm-4 col-form-label fw-bold text-end">Total Flight Time:</label>
+          <div class="col-sm-8">
+            <input type="text" id="flightTime" class="form-control" placeholder="e.g. 90 Minutes or 1.5 Hours" required />
+          </div>
+        </div>
+        <!-- Emergency Reported -->
+        <div class="mb-3 row align-items-center">
+          <label class="col-sm-4 col-form-label fw-bold text-end">Emergency Reported:</label>
+          <div class="col-sm-8 d-flex gap-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="emergency" id="emergencyYes" value="Yes" required>
+              <label class="form-check-label" for="emergencyYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="emergency" id="emergencyNo" value="No" required>
+              <label class="form-check-label" for="emergencyNo">No</label>
+            </div>
+          </div>
+        </div>
+        <!-- Emergency Section -->
+        <div id="emergencySection" style="display:none;">
+          <div class="mb-3 row align-items-center">
+            <label for="emergencyType" class="col-sm-4 col-form-label fw-bold text-end">Type Of Emergency:</label>
+            <div class="col-sm-8">
+              <input type="text" id="emergencyType" class="form-control" placeholder="e.g. Engine Failure, Fuel Leak" />
+            </div>
+          </div>
+          <div class="mb-3 row align-items-center">
+            <label for="emergencyLocation" class="col-sm-4 col-form-label fw-bold text-end">Estimate Location Of Emergency Occurrence:</label>
+            <div class="col-sm-8">
+              <input type="text" id="emergencyLocation" class="form-control" />
+            </div>
+          </div>
+          <div class="mb-3 row align-items-center">
+            <label for="emergencyExplanation" class="col-sm-4 col-form-label fw-bold text-end">Short Explanation:</label>
+            <div class="col-sm-8">
+              <textarea id="emergencyExplanation" class="form-control" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="mb-3 row align-items-center">
+            <label for="incidentAttachment" class="col-sm-4 col-form-label fw-bold text-end">Attach Incident Report (URL):</label>
+            <div class="col-sm-8">
+              <input type="text" id="incidentAttachment" class="form-control" placeholder="https://..." />
+            </div>
+          </div>
+        </div>
+        <!-- Signature -->
+        <div class="mb-3 row align-items-center">
+          <label for="signatureName" class="col-sm-4 col-form-label fw-bold text-end">Signature Name:</label>
+          <div class="col-sm-8">
+            <input type="text" id="signatureName" class="form-control" required />
+          </div>
+        </div>
+        <!-- Submit -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-success px-5">Generate and Copy BBCode</button>
+          <p id="flightCopySuccess" class="mt-2 text-success fw-semibold"></p>
+        </div>
+        <!-- BBCode Output -->
+        <div class="mt-4">
+          <label for="flightBBOutput" class="form-label fw-bold">BBCode Output:</label>
+          <textarea id="flightBBOutput" class="form-control" rows="22" readonly placeholder="BBCode will appear here"></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
 
+<script>
+function formatDateDDMMMYYYY(dateStr) {
+  if (!dateStr) return '';
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const [year, month, day] = dateStr.split('-');
+  return `${day}/${months[parseInt(month, 10) - 1]}/${year}`;
+}
+
+// Show/hide emergency section
+document.querySelectorAll('input[name="emergency"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    document.getElementById('emergencySection').style.display =
+      this.value === 'Yes' ? 'block' : 'none';
+  });
+});
+
+document.getElementById('flightInfoForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const successMsg = document.getElementById('flightCopySuccess');
+  successMsg.textContent = '';
+
+  if (!this.checkValidity()) {
+    this.reportValidity();
+    return;
+  }
+
+  const dateRaw = document.getElementById('flightDate').value;
+  const date = formatDateDDMMMYYYY(dateRaw);
+  const tailNumber = document.getElementById('tailNumber').value.trim();
+  const passengerList = document.getElementById('passengerList').value.trim();
+  const departureTime = document.getElementById('departureTime').value.trim();
+  const departureLocation = document.getElementById('departureLocation').value.trim();
+  const intermittentLocations = document.getElementById('intermittentLocations').value.trim();
+  const arrivalLocation = document.getElementById('arrivalLocation').value.trim();
+  const cruiseAltitude = document.getElementById('cruiseAltitude').value.trim();
+  const flightTime = document.getElementById('flightTime').value.trim();
+  const emergency = document.querySelector('input[name="emergency"]:checked').value;
+  const signatureName = document.getElementById('signatureName').value.trim();
+
+  // Emergency fields
+  let emergencySection = '';
+  if (emergency === 'Yes') {
+    const emergencyType = document.getElementById('emergencyType').value.trim();
+    const emergencyLocation = document.getElementById('emergencyLocation').value.trim();
+    const emergencyExplanation = document.getElementById('emergencyExplanation').value.trim();
+    const incidentAttachment = document.getElementById('incidentAttachment').value.trim();
+    emergencySection = `
+[center][color=#BF0000][size=85][b]ONLY FILL THIS SECTION IF AN EMERGENCY HAPPENED[/b][/size][/color][/center]
+
+[b]Type Of Emergency (e.g Engine Failure, Fuel Leak):[/b] ${emergencyType}
+
+[b]Estimate Location Of Emergency Occurrence:[/b] ${emergencyLocation}
+
+[b]Short Explanation:[/b] ${emergencyExplanation}
+
+[b]Attach Incident Report:[/b] [url=${incidentAttachment}]**ATTACHMENT**[/url]`;
+  } else {
+    emergencySection = `
+[center][color=#BF0000][size=85][b]ONLY FILL THIS SECTION IF AN EMERGENCY HAPPENED[/b][/size][/color][/center]
+
+[b]Type Of Emergency (e.g Engine Failure, Fuel Leak):[/b]
+
+[b]Estimate Location Of Emergency Occurrence:[/b]
+
+[b]Short Explanation:[/b]
+
+[b]Attach Incident Report:[/b] [url=]**ATTACHMENT**[/url]`;
+  }
+
+  const bbcode = `[img]https://i.imgur.com/IXMSWjH.png[/img]
+[divbox=#091f62][b][color=white]1. FLIGHT INFORMATION[/color][/b][/divbox]
+[divbox=white]
+[list=none]
+[b]Date:[/b] ${date}
+
+[b]Aircraft Tail Number or Callsign:[/b] ${tailNumber}
+
+[b]Passenger List:[/b] ${passengerList}
+
+[b]Departure Time:[/b] ${departureTime} [ooc] UTC [/ooc]
+
+[b]Departure Location:[/b] ${departureLocation}
+
+[b]Intermittent Locations:[/b] ${intermittentLocations}
+
+[b]Arrival Location:[/b] ${arrivalLocation}
+
+[b]Cruise Altitude:[/b] ${cruiseAltitude} Feet
+
+[b]Total Flight Time:[/b] ${flightTime}
+
+[b]Emergency Reported:[/b] ${emergency}
+[hr][/hr]
+${emergencySection}
+[hr][/hr]
+[center][b]Signature:[/b]
+[i] ${signatureName} [/i]
+[hr][/hr]
+[i][color=#FF0000][size=85]By submitting this form, I certify under penalty of law the above information is correct and accurate to the best of my knowledge.[/size][/color][/i][/center]`;
+
+  const outputArea = document.getElementById('flightBBOutput');
+  outputArea.value = bbcode.trim();
+  outputArea.focus();
+  outputArea.select();
+
+  try {
+    navigator.clipboard.writeText(bbcode).then(() => {
+      successMsg.textContent = 'Copied to clipboard!';
+    }, () => {
+      successMsg.textContent = 'Failed to copy automatically. Please copy manually.';
+    });
+  } catch {
+    successMsg.textContent = 'Clipboard API not supported. Please copy manually.';
+  }
+});
+</script>
+  </section>
   <!-- 📄 Info Desk -->
   <section id="infodesk">
   <h2>📢 Public Information Desk</h2>
@@ -266,33 +510,33 @@
   <section id="inq">
  <h2>General Inquiries</h2>
   <ul>
-    <li><strong>Administrator:</strong> Scottie Cross – <a href="mailto:scottiecross@sa.gov.us">scottiecross@sa.gov.us</a></li>
-    <li><strong>Deputy Administrator:</strong> Jeremy Williams – <a href="mailto:jeremy.williams@sa.gov.us">jeremy.williams@sa.gov.us</a></li>
-    <li><strong>Executive Aviation Official:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
+    <li><strong>Administrator:</strong> Scottie Cross – <a href="https://gov.eclipse-rp.net/ucp.php?i=pm&mode=compose&u=24784">scottiecross@sa.gov.us</a></li>
+    <li><strong>Deputy Administrator:</strong> Jeremy Williams – <a href="https://gov.eclipse-rp.net/ucp.php?i=pm&mode=compose&u=20281">jeremy.williams@sa.gov.us</a></li>
+    <li><strong>Executive Aviation Official:</strong> Vacant – <a href="#  ">vacant@sa.gov.us</a></li>
   </ul>
 
   <h2>Office of Flight Training Inquiries (OFT)</h2>
   <ul>
-    <li><strong>Department Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
-    <li><strong>Department Deputy Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
+    <li><strong>Department Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
+    <li><strong>Department Deputy Director:</strong> Vacant – <a href="#  ">vacant@sa.gov.us</a></li>
   </ul>
 
   <h2>Air Traffic Control Inquiries (ATC)</h2>
   <ul>
-    <li><strong>Department Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
-    <li><strong>Department Deputy Director:</strong> Mick Wegman – <a href="mailto:Mick.Wegman@sa.gov.us">Mick.Wegman@sa.gov.us</a></li>
+    <li><strong>Department Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
+    <li><strong>Department Deputy Director:</strong> Mick Wegman – <a href="https://gov.eclipse-rp.net/ucp.php?i=pm&mode=compose&u=26871">Mick.Wegman@sa.gov.us</a></li>
   </ul>
 
   <h2>Aircraft Investigation & Accident Prevention Inquiries (AVAP)</h2>
   <ul>
-    <li><strong>Department Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
-    <li><strong>Department Deputy Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
+    <li><strong>Department Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
+    <li><strong>Department Deputy Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
   </ul>
 
   <h2>Office of Aviation Sports Inquiries (OAS)</h2>
   <ul>
-    <li><strong>Department Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
-    <li><strong>Department Deputy Director:</strong> Vacant – <a href="mailto:vacant@sa.gov.us">vacant@sa.gov.us</a></li>
+    <li><strong>Department Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
+    <li><strong>Department Deputy Director:</strong> Vacant – <a href="#">vacant@sa.gov.us</a></li>
   </ul>
   </section>
 
