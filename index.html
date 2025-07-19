@@ -646,9 +646,9 @@ const API_KEY556 = "AIzaSyCTscbYmfCZ_KINIp_Z6QmHQ7J3SUQOGhk"; // <-- Replace wit
       if (info) {
         const parts = info.split(',').map(p => p.trim());
         parts.forEach(p => {
-          if (p.toLowerCase().startsWith('instructor:')) instructor = p.split(':')[1].trim();
-          if (p.toLowerCase().startsWith('time:')) time = p.split(':')[1].trim();
-          if (p.toLowerCase().startsWith('max')) max = p.split(':')[1].trim();
+          if (p.toLowerCase().startsWith('instructor:')) instructor = p.split('!')[1].trim();
+          if (p.toLowerCase().startsWith('time:')) time = p.split('!')[1].trim();
+          if (p.toLowerCase().startsWith('max')) max = p.split('!')[1].trim();
         });
       }
 
@@ -657,8 +657,8 @@ const API_KEY556 = "AIzaSyCTscbYmfCZ_KINIp_Z6QmHQ7J3SUQOGhk"; // <-- Replace wit
       block.className = "notice-item";
       block.innerHTML = `
         <strong>📘 ${title}</strong><br>
-        👨‍🏫 <strong>Instructor:</strong> ${instructor}<br>
-        🕒 <strong>Time:</strong> ${time}<br>
+        👨‍🏫 <strong>Instructor</strong> ${instructor}<br>
+        🕒 <strong>Time</strong> ${time} <strong>((UTC))</strong><br>
         👥 <strong>Maximum Students:</strong> ${max}
       `;
       container.appendChild(block);
@@ -703,9 +703,9 @@ const API_KEY3 = "AIzaSyCTscbYmfCZ_KINIp_Z6QmHQ7J3SUQOGhk"; // <-- Replace with 
       if (info) {
         const parts = info.split(',').map(p => p.trim());
         parts.forEach(p => {
-          if (p.toLowerCase().startsWith('instructor:')) instructor = p.split(':')[1].trim();
-          if (p.toLowerCase().startsWith('time:')) time = p.split(':')[1].trim();
-          if (p.toLowerCase().startsWith('max')) max = p.split(':')[1].trim();
+          if (p.toLowerCase().startsWith('instructor')) instructor = p.split('!')[1].trim();
+          if (p.toLowerCase().startsWith('time')) time = p.split('!')[1].trim();
+          if (p.toLowerCase().startsWith('max')) max = p.split('!')[1].trim();
         });
       }
 
@@ -715,7 +715,7 @@ const API_KEY3 = "AIzaSyCTscbYmfCZ_KINIp_Z6QmHQ7J3SUQOGhk"; // <-- Replace with 
       block.innerHTML = `
         <strong>📘 ${title}</strong><br>
         👨‍🏫 <strong>Instructor:</strong> ${instructor}<br>
-        🕒 <strong>Time:</strong> ${time}<br>
+        🕒 <strong>Time:</strong> ${time} <strong>((UTC))</strong><br>
         👥 <strong>Maximum Students:</strong> ${max}
       `;
       container.appendChild(block);
